@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub PR - Collapse tests",
+  "version": "1.0.0",
+  "description": "Adds a button next to Submit review to collapse every test file while reviewing a GitHub pull request.",
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

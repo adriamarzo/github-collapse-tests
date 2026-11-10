@@ -7,8 +7,8 @@
   const isPullRequestChangesPage = () => PULL_REQUEST_CHANGES_PATH.test(location.pathname);
 
   const findSubmitReviewButton = () =>
-    [...document.querySelectorAll('button[data-variant="primary"]')].find((button) =>
-      button.textContent.trim().startsWith('Submit review'),
+    [...document.querySelectorAll('button[data-variant="primary"]')].find(
+      (button) => button.textContent.trim().startsWith('Submit review') && !button.closest('dialog, [role="dialog"]'),
     );
 
   const getTooltipText = (button) => {
@@ -45,6 +45,7 @@
     button.dataset.component = 'Button';
     button.dataset.size = submitReviewButton.dataset.size ?? 'small';
     button.dataset.variant = 'primary';
+    button.style.marginInlineStart = getComputedStyle(submitReviewButton).marginInlineStart;
 
     const content = document.createElement('span');
     content.dataset.component = 'buttonContent';
